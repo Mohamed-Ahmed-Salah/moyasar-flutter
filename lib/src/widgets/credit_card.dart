@@ -12,8 +12,10 @@ class CreditCard extends StatefulWidget {
       {super.key,
       required this.config,
       required this.onPaymentResult,
-      this.locale = const Localization.en()});
+      this.locale = const Localization.en(),
+      required this.buttonColor});
 
+  final Color buttonColor;
   final Function onPaymentResult;
   final PaymentConfig config;
   final Localization locale;
@@ -172,7 +174,7 @@ class _CreditCardState extends State<CreditCard> {
                 style: ButtonStyle(
                   minimumSize:
                       const MaterialStatePropertyAll<Size>(Size.fromHeight(55)),
-                  backgroundColor: MaterialStatePropertyAll<Color>(blueColor),
+                  backgroundColor: MaterialStatePropertyAll<Color>(widget.buttonColor),
                 ),
                 onPressed: _isSubmitting ? () {} : _saveForm,
                 child: _isSubmitting
